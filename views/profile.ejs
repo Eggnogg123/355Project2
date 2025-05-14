@@ -9,6 +9,11 @@
     <% } %>
 
     <div class="profile-details">
+         <form class="pfp-form" action="/auth/profile/update" method="POST">
+            <label for="pfpPic">Profile Pic Url</label>
+            <input type="url" name="pfpPic" id="pfpPic" placeholder="Enter link for new profile picture" required />
+            <button type="submit" class="btn submit-btn">Submit</button>
+        </form>
         <p><strong>Username:</strong> <%= username %></p>
         <% if (typeof email !== 'undefined' && email) { %>
             <p><strong>Email:</strong> <%= email %></p>

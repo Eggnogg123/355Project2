@@ -96,7 +96,8 @@ router.post('/signup', async (req, res) => {
       password: hashedPassword,
       totalAccumulatedScore: 0,
       quizHistory: [],
-      createdAt: new Date() // MongoDB will store as ISODate
+      createdAt: new Date(), // MongoDB will store as ISODate
+      profilePic: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"
     };
 
     const result = await db.insertOne(newUser);
@@ -147,6 +148,7 @@ router.get('/profile', requireLogin, async (req, res) => {
     const sortedQuizHistory = user.quizHistory ? user.quizHistory.sort((a, b) => new Date(b.datePlayed) - new Date(a.datePlayed)) : [];
 
     res.render('profile', {
+      profilePic: req.session.profilePic,
       username: user.username,
       email: user.email,
       totalAccumulatedScore: user.totalAccumulatedScore || 0,

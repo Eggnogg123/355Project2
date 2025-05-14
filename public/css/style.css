@@ -178,6 +178,64 @@ nav a:hover {
 }
 
 
+/* Dropdown container */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown summary (profile icon) */
+.avatar {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar image style */
+.avatar-img {
+  width: 40px;  /* Adjust the size as needed */
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-img:hover {
+  cursor: pointer;
+}
+
+/* Dropdown menu style */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  min-width: 160px; /* Increased for better coverage */
+  padding: 0.5rem 0;
+  z-index: 999; /* Ensure it appears above other content */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.dropdown-menu li {
+  padding: 0.75rem 1.25rem;
+  list-style: none;
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+}
+
+.dropdown-menu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+details[open] .dropdown-menu {
+  display: block;
+}
+
 /* Footer */
 footer {
   background-color: rgba(0, 0, 0, 0.5); /* semi-transparent to show bg */
