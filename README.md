@@ -1,4 +1,4 @@
-# Quiz Application
+# QuizBlox
 
 A full-stack quiz application built with Express.js and EJS templating engine.
 
@@ -16,6 +16,7 @@ A full-stack quiz application built with Express.js and EJS templating engine.
 | Random Multiple-choice Questions with Feedback | Anthony, Hamza, Arun, Justin |
 | Score tracking, History and Take Multiple Quizes | Hamza, Justin, Arun |
 | Responsive design with modern CSS | Hamza, Justin, Arun |
+| Minecraft Profile Picture Generation | Hamza, Justin, Anthony |
 
 ## Tech Stack
 
@@ -23,6 +24,7 @@ A full-stack quiz application built with Express.js and EJS templating engine.
 - **Frontend**: HTML, CSS, JavaScript
 - **Templating**: EJS
 - **Data Storage**: Local JSON files
+- **External APIs**: Minotar API for Minecraft profile pictures
 
 ## Installation
 
@@ -49,6 +51,11 @@ npm run dev
 3. Receive immediate feedback on your answers (✅ correct, ❌ incorrect)
 4. View your final score and question review at the end
 5. Check your score history in the "My Scores" section
+
+### Profile Pictures
+- Users can set their profile picture using their Minecraft username
+- Profile pictures are automatically fetched from the Minotar API
+- Pictures are displayed in the user profile and score history
 
 ## Project Structure
 

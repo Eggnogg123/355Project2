@@ -14,6 +14,7 @@ router.get('/setup', async (req, res) => {
   try {
     const categories = await fetchCategories();
   res.render('quiz_setup', {
+    profilePic: req.session.profilePic,
     username: req.session.username,
       categories: categories || [], // Pass empty array if fetching fails
       error: null
@@ -141,6 +142,7 @@ router.get('/question', (req, res) => {
 
   const currentQuestion = quizSession.questions[quizSession.currentIndex];
   res.render('quiz_question', {
+    profilePic: req.session.profilePic,
     username: req.session.username, // Pass username for header
     question: currentQuestion,
     questionNumber: quizSession.currentIndex + 1,
@@ -195,6 +197,7 @@ router.post('/answer', async (req, res) => {
   // Show feedback for the current question first
   if (req.body.showFeedback === 'true' && !isLastQuestion) {
     return res.render('quiz_question', {
+      profilePic: req.session.profilePic,
       username: req.session.username,
       profilePic: req.session.profilePic,
       question: currentQuestion,
@@ -240,7 +243,7 @@ router.get('/results', async (req, res) => {
       datePlayed: new Date()
     };
     // db.insertOne(scoreRecord);
-  
+
     const userId = req.session.userId; // Already a string from auth routes
     const newDB = getCollection("UserData");
     const updateResult = await newDB.updateOne(
@@ -261,11 +264,14 @@ router.get('/results', async (req, res) => {
 
     // Render results page
     res.render('quiz_results', {
+      profilePic: req.session.profilePic,
       username: req.session.username,
       score: quizSession.score,
       totalQuestions: quizSession.totalQuestions,
       percentage: quizSession.totalQuestions > 0 ? Math.round((quizSession.score / quizSession.totalQuestions) * 100) : 0,
-      answers: quizSession.answers
+      answers: quizSession.answers,
+      category: quizSession.categoryName,
+      difficulty: quizSession.difficulty
     });
 
     // Clear quiz session data after showing results
@@ -355,6 +361,7 @@ router.get('/leaderboard', async (req, res) => {
 
 
     res.render('leaderboard', {
+      profilePic: req.session.profilePic,
       username: req.session.username,
       topUsers,
       categories: categories || [],
